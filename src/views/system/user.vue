@@ -46,8 +46,9 @@ const handleSearch = () => {
 let columns = ref([
     { type: 'index', label: '序号', width: 55, align: 'center' },
     { prop: 'name', label: '用户名' },
-    { prop: 'phone', label: '手机号' },
-    { prop: 'role', label: '角色' },
+    { prop: 'language1', label: '账号' },
+    { prop: 'language2', label: '角色' },
+    { prop: 'healthIndex', label: '健康指数' },  // 新增列
     { prop: 'operator', label: '操作', width: 250 },
 ])
 const page = reactive({
@@ -73,11 +74,12 @@ let options = ref<FormOption>({
     labelWidth: '100px',
     span: 12,
     list: [
-        { type: 'input', label: '用户名', prop: 'name', required: true },
-        { type: 'input', label: '手机号', prop: 'phone', required: true },
+        { type: 'input', label: '指标', prop: 'name', required: true },
+        { type: 'input', label: '术语1', prop: 'language1', required: true },
         { type: 'input', label: '密码', prop: 'password', required: true },
         { type: 'input', label: '邮箱', prop: 'email', required: true },
-        { type: 'input', label: '角色', prop: 'role', required: true },
+        { type: 'input', label: '术语2', prop: 'language2', required: true },
+         { type: 'input', label: '健康指数', prop: 'healthIndex', required: true },  // 新增字段
     ]
 })
 const visible = ref(false);
@@ -113,7 +115,7 @@ const handleView = (row: User) => {
         },
         {
             prop: 'name',
-            label: '用户名',
+            label: '指标',
         },
         {
             prop: 'password',
@@ -124,11 +126,11 @@ const handleView = (row: User) => {
             label: '邮箱',
         },
         {
-            prop: 'phone',
+            prop: '术语1',
             label: '电话',
         },
         {
-            prop: 'role',
+            prop: '术语2',
             label: '角色',
         },
         {

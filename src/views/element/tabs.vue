@@ -15,7 +15,7 @@
 				</el-table-column>
 			</el-table>
 			<div class="handle-row">
-				<el-button type="primary">全部标为已读</el-button>
+				<el-button type="primary" class="custom-button">全部标为已读</el-button>
 			</div>
 		</el-tab-pane>
 		<el-tab-pane :label="`已读消息(${state.read.length})`" name="second">
@@ -112,5 +112,13 @@ const handleRestore = (index: number) => {
 
 .handle-row {
 	margin-top: 30px;
+}
+.custom-button {
+  background-color: #00796A; 
+  border:none;
+}
+
+.custom-button:hover {
+  background-color: #f48839; 
 }
 </style>

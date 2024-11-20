@@ -10,19 +10,21 @@
         >
             <template v-for="item in menuData">
                 <template v-if="item.children">
-                    <el-sub-menu :index="item.index" :key="item.index" v-permiss="item.id">
+                    <el-sub-menu :index="item.index" :key="item.index" v-permiss="item.id" @click="console.log(item.children)">
                         <template #title>
-                            <el-icon>
-                                <component :is="item.icon"></component>
-                            </el-icon>
-                            <span>{{ item.title }}</span>
+ 
+                                <el-icon>
+                                    <component :is="item.icon"></component>
+                                </el-icon>
+                                <span>{{ item.title }}</span>
+
                         </template>
                         <template v-for="subItem in item.children">
                             <el-sub-menu
                                 v-if="subItem.children"
                                 :index="subItem.index"
                                 :key="subItem.index"
-                                v-permiss="item.id"
+                                v-permiss="subItem.id"
                             >
                                 <template #title>{{ subItem.title }}</template>
                                 <el-menu-item
@@ -33,7 +35,7 @@
                                     {{ threeItem.title }}
                                 </el-menu-item>
                             </el-sub-menu>
-                            <el-menu-item v-else :index="subItem.index" v-permiss="item.id">
+                            <el-menu-item v-else :index="subItem.index" v-permiss="subItem.id">
                                 {{ subItem.title }}
                             </el-menu-item>
                         </template>
@@ -82,9 +84,42 @@ const sidebar = useSidebarStore();
 
 .sidebar-el-menu:not(.el-menu--collapse) {
     width: 250px;
+    
 }
 
 .sidebar-el-menu {
     min-height: 100%;
 }
+
+.sidebar-el-menu{
+    .el-menu-item,
+    .el-sub-menu__title span{
+        color: #444444;
+        font-size:16px;
+    }
+    .el-menu-item:hover,
+    .el-menu-item.is-active,
+    .el-sub-menu__title:hover{
+        background: #3eb1a2 !important;
+    }
+    .el-menu-item:hover,
+    .el-menu-item.is-active,
+    .el-sub-menu__title:hover span{
+        color: #fff;
+        font-size:16px;
+        /* background: #3eb1a2 !important; */
+    }
+
+    .el-icon{
+        color: #3eb1a2 !important;
+        
+    }
+
+    .el-sub-menu__title:hover .el-icon,
+    .el-menu-item:hover .el-icon,
+    .el-menu-item.is-active .el-icon {
+        color: #fff !important;
+    }
+}
+
 </style>

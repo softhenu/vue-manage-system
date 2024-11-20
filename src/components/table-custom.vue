@@ -20,12 +20,12 @@
                 </el-tooltip>
                 <el-divider direction="vertical" />
                 <el-tooltip effect="dark" content="列设置" placement="top">
-                    <el-dropdown :hide-on-click="false" size="small" trigger="click">
-                        <el-icon class="columns-setting-icon">
+                    <el-dropdown :hide-on-click="false" size="large" trigger="click">
+                        <el-icon class="columns-setting-icon change-icon">
                             <Setting />
                         </el-icon>
                         <template #dropdown>
-                            <el-dropdown-menu>
+                            <el-dropdown-menu class="change-dropdown">
                                 <el-dropdown-item v-for="c in columns">
                                     <el-checkbox v-model="c.visible" :label="c.label" />
                                 </el-dropdown-item>
@@ -47,13 +47,13 @@
                     <template #default="{ row, column, $index }" v-if="!item.type">
                         <slot :name="item.prop" :rows="row" :index="$index">
                             <template v-if="item.prop == 'operator'">
-                                <el-button type="warning" size="small" :icon="View" @click="viewFunc(row)">
+                                <el-button class="hover-y" style="background-color: #00796A; border:none; font-size:12px; color: #ffffff;"  size="small" :icon="View" @click="viewFunc(row)">
                                     查看
                                 </el-button>
-                                <el-button type="primary" size="small" :icon="Edit" @click="editFunc(row)">
+                                <el-button class="hover-y" style="background-color: #00796A; border:none; font-size:12px; color: #ffffff;"  size="small" :icon="Edit" @click="editFunc(row)">
                                     编辑
                                 </el-button>
-                                <el-button type="danger" size="small" :icon="Delete" @click="handleDelete(row)">
+                                <el-button type="danger" style="font-size:12px;" size="small" :icon="Delete" @click="handleDelete(row)">
                                     删除
                                 </el-button>
                             </template>
@@ -190,6 +190,9 @@ const getIndex = (index: number) => {
 </script>
 
 <style scoped>
+.el-dropdown-item{
+  color: red !important;
+}
 .table-toolbar {
     display: flex;
     justify-content: space-between;
@@ -207,5 +210,13 @@ const getIndex = (index: number) => {
 <style>
 .table-header .cell {
     color: #333;
+}
+.hover-y:hover{
+    background:#f48839 !important;
+    font-size:12px;
+    color:#ffffff;
+}
+.el-table__row:hover{
+  background-color: #edf9f6;
 }
 </style>

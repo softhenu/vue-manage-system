@@ -3,7 +3,7 @@
         <!-- 折叠按钮 -->
         <div class="header-left">
             <img class="logo" src="../assets/img/logo.svg" alt="" />
-            <div class="web-title">后台管理系统</div>
+            <div class="web-title">指标分析</div>
             <div class="collapse-btn" @click="collapseChage">
                 <el-icon v-if="sidebar.collapse">
                     <Expand />
@@ -12,6 +12,11 @@
                     <Fold />
                 </el-icon>
             </div>
+            <div class="header-menu">首页</div>
+            <div class="header-menu">导航</div>
+            <div class="header-menu">通知</div>
+            <div class="header-menu">待办事项</div>
+            <div class="header-menu">机构搜索</div>
         </div>
         <div class="header-right">
             <div class="header-user-con">
@@ -111,7 +116,7 @@ const setFullScreen = () => {
     width: 100%;
     height: 70px;
     color: var(--header-text-color);
-    background-color: var(--header-bg-color);
+    background-color: #00796A;
     border-bottom: 1px solid #ddd;
 }
 
@@ -144,6 +149,18 @@ const setFullScreen = () => {
 
 .collapse-btn:hover {
     opacity: 1;
+}
+
+.header-menu{
+    height: 100%;
+    line-height: 70px;
+    width: 150px;
+    text-align: center;
+}
+
+.header-menu:hover{
+    background-color: #3eb1a2;
+    cursor: pointer;
 }
 
 .header-right {

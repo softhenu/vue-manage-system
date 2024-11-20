@@ -1,3 +1,4 @@
+import { da } from 'element-plus/es/locale';
 import { defineStore } from 'pinia';
 
 interface ListItem {

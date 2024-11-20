@@ -24,7 +24,22 @@ i {
 }
 
 .el-table th {
-	background-color: #f5f7fa !important;
+	background-color: #f2f2f5 !important;
+	color: #888;
+	font-size: 14px;
+}
+.el-table th div{
+	font-weight: normal;
+}
+
+.score_pass{
+	color: #00796A;
+	text-align: center;
+}
+
+.score_fail{
+	color: var(--el-color-danger-dark);
+	text-align: center;
 }
 
 .plugins-tips {
@@ -79,9 +94,34 @@ i {
 	justify-content: center;
 	align-items: center;
 }
-
 :root {
+	--el-border-color: #d8d8d8 !important;
+	--el-table-border-color: red !important;
+	--el-color-primary: #00796A !important;
 	--header-bg-color: #242f42;
+	--header-bg-color-hover: #1b2434;
 	--header-text-color: #fff;
 	--active-color: var(--el-color-primary);
+}
+
+.el-table__row{
+	--el-table-row-hover-bg-color: #edf9f6;
+}
+
+.el-button{
+	--el-button-hover-bg-color: #fff4ed;
+	--el-button-hover-border-color: #f48839;
+	--el-button-hover-text-color: #f48839;
+}
+
+.el-button.is-link{
+	padding: 0;
+}
+
+.el-button--primary{
+	--el-button-hover-text-color: #fff;
+	--el-button-hover-bg-color: #f48839;
+	--el-button-active-bg-color: var(--el-color-primary);
+	--el-button-hover-border-color: #f48839;
+	--el-button-hover-link-text-color: #f48839;
 }

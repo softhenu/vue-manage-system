@@ -7,21 +7,22 @@
                 :label="item.title"
                 :name="item.path"
                 @click="setTags(item)"
+                class="custom-tab-pane"
             ></el-tab-pane>
         </el-tabs>
         <div class="Tabs-close-box">
             <el-dropdown @command="handleTags">
-                <el-button size="small" type="primary" plain>
-                    标签选项
+                <el-button size="large" style="border: none; background-color: transparent;" plain>
+                <span class="button-text">标签选项</span>
                     <el-icon class="el-icon--right">
                         <arrow-down />
                     </el-icon>
                 </el-button>
                 <template #dropdown>
                     <el-dropdown-menu size="small">
-                        <el-dropdown-item command="other">关闭其他</el-dropdown-item>
-                        <el-dropdown-item command="current">关闭当前</el-dropdown-item>
-                        <el-dropdown-item command="all">关闭所有</el-dropdown-item>
+                        <el-dropdown-item command="other" class="hover-red">关闭其他</el-dropdown-item>
+                        <el-dropdown-item command="current" class="hover-red">关闭当前</el-dropdown-item>
+                        <el-dropdown-item command="all" class="hover-red">关闭所有</el-dropdown-item>
                     </el-dropdown-menu>
                 </template>
             </el-dropdown>
@@ -71,6 +72,7 @@ const closeOther = () => {
 const handleTags = (command: string) => {
     switch (command) {
         case 'current':
+            console.log(1)
             // 关闭当前页面的标签页
             tabs.closeCurrentTag({
                 $router: router,
@@ -106,6 +108,43 @@ watch(
 </script>
 
 <style scss>
+.hover-red:hover {
+    background-color: #f48839 !important; 
+    color: #ffffff !important; 
+}
+.button-text {
+    color: #444444; 
+    transition: color 0.3s; 
+}
+
+.button-text:hover {
+    color: #00796A;
+}
+.el-tabs__nav.is-top{
+
+    .el-tabs__item.is-active,
+    .el-tabs__item:hover{
+        color: #3eb1a2;
+        background:#ffffff;
+        font-size:14px;
+        //border: 20px !important; /* 边框样式及颜色 */
+    }
+    .el-tabs__item {
+        background: #dfe5e5; 
+        color:#666666;
+        font-size:14px;
+        //margin-right: 10px !important;
+    }
+}
+.el-tabs--card>.el-tabs__header{
+    border-bottom: 0px !important;
+}
+
+.tabs-container{
+    //border-bottom: 1px solid var(--el-border-color-light);
+    border-bottom: 1px solid #E3EFED;
+}
+
 .tabs-container {
     position: relative;
     overflow: hidden;
@@ -141,8 +180,8 @@ watch(
     text-align: center;
     width: 110px;
     height: 30px;
-    background: #fff;
-    box-shadow: -3px 0 15px 3px rgba(0, 0, 0, 0.1);
+    background: #E3EFED;
+    //box-shadow: -3px 0 15px 3px rgba(0, 0, 0, 0.1);
     z-index: 10;
 }
 </style>

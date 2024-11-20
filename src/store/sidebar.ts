@@ -4,7 +4,7 @@ export const useSidebarStore = defineStore('sidebar', {
 	state: () => {
 		return {
 			collapse: false,
-			bgColor: localStorage.getItem('sidebar-bg-color') || '#324157',
+			bgColor: localStorage.getItem('sidebar-bg-color') || '#E3EFED',
 			textColor: localStorage.getItem('sidebar-text-color') || '#bfcbd9'
 		};
 	},

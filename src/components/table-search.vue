@@ -13,8 +13,8 @@
 					:value-format="item.format"></el-date-picker>
 			</el-form-item>
 			<el-form-item>
-				<el-button type="primary" :icon="Search" @click="search">搜索</el-button>
-				<el-button :icon="Refresh" @click="resetForm(searchRef)">重置</el-button>
+				<el-button class="hover-search" :icon="Search" style="border: none; color:white; background-color: #00796A;" @click="search">搜索</el-button>
+				<el-button class="hover-search" :icon="Refresh" style="border: none; color:white; background-color: #00796A;" @click="resetForm(searchRef)">重置</el-button>
 			</el-form-item>
 		</el-form>
 	</div>
@@ -56,5 +56,10 @@ const resetForm = (formEl: FormInstance | undefined) => {
 	margin-bottom: 10px;
 	border: 1px solid #ddd;
 	border-radius: 5px
+}
+.hover-search:hover {
+    background-color: #f48839 !important;
+    color: white !important; 
+	font-size:14px;
 }
 </style>

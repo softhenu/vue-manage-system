@@ -13,7 +13,7 @@
                     <el-tag type="danger" v-else>禁用</el-tag>
                 </template>
                 <template #permissions="{ rows }">
-                    <el-button type="primary" size="small" plain @click="handlePermission(rows)">管理</el-button>
+                    <el-button class="mangbut"  size="small" plain @click="handlePermission(rows)">管理</el-button>
                 </template>
             </TableCustom>
         </div>
@@ -159,4 +159,17 @@ const handlePermission = (row: Role) => {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.mangbut{
+    background:#00796A;
+    color:#ffffff;
+    font-size:12px;
+    border:none;
+}
+.mangbut:hover{
+    background:#f48839;
+    color:#ffffff;
+    font-size:12px;
+    border:none;
+}
+</style>

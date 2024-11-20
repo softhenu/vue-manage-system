@@ -72,7 +72,7 @@
                                 <el-input type="password" v-model="form.new1"></el-input>
                             </el-form-item>
                             <el-form-item>
-                                <el-button type="primary" @click="onSubmit">保存</el-button>
+                                <el-button class="hover-search" style="border: none; color:white; background-color: #00796A;" @click="onSubmit">保存</el-button>
                             </el-form-item>
                         </el-form>
                     </el-tab-pane>
@@ -266,5 +266,8 @@ const saveAvatar = () => {
 <style>
 .el-tabs.el-tabs--left {
     height: 100%;
+}
+.hover-search:hover{
+    background:#f48839 !important;
 }
 </style>

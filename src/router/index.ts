@@ -18,17 +18,67 @@ const routes: RouteRecordRaw[] = [
                 path: '/dashboard',
                 name: 'dashboard',
                 meta: {
-                    title: '系统首页',
-                    noAuth: true,
+                    title: '系统首页(上级机构)',
+                    permiss: 'd1'
                 },
                 component: () => import(/* webpackChunkName: "dashboard" */ '../views/dashboard.vue'),
+            },
+            {
+                path: '/dashboard1',
+                name: 'dashboard1',
+                meta: {
+                    title: '系统首页(下级机构)',
+                    permiss: 'd2'
+                },
+                component: () => import(/* webpackChunkName: "dashboard" */ '../views/dashboard1.vue'),
+            },
+            {
+                path: '/dashboard2',
+                name: 'dashboard2',
+                meta: {
+                    title: '指标模块',
+                    permiss: 'd3'
+                },
+                component: () => import(/* webpackChunkName: "dashboard" */ '../views/dashboard2.vue'),
+            },
+            {
+                path: '/detail-2',
+                meta: {
+                    title: '二级指标管理',
+                    permiss: 'm2'
+                },
+                component: () => import(/* webpackChunkName: "404" */ '../views/pages/detail.vue'),
+            },
+            {
+                path: '/edit-detail-2',
+                meta: {
+                    title: '二级指标定义',
+                    permiss: 'm2a'
+                },
+                component: () => import(/* webpackChunkName: "404" */ '../views/pages/add-detail.vue'),
+            },
+            {
+                path: '/term',
+                meta: {
+                    title: '术语详情',
+                    permiss: 'm4'
+                },
+                component: () => import(/* webpackChunkName: "404" */ '../views/pages/term.vue'),
+            },
+            {
+                path: '/edit-term',
+                meta: {
+                    title: '术语定义',
+                    permiss: 'm2a'
+                },
+                component: () => import(/* webpackChunkName: "404" */ '../views/pages/edit-term.vue'),
             },
             {
                 path: '/system-user',
                 name: 'system-user',
                 meta: {
                     title: '用户管理',
-                    permiss: '11',
+                    permiss: 'a1',
                 },
                 component: () => import(/* webpackChunkName: "system-user" */ '../views/system/user.vue'),
             },
@@ -37,7 +87,7 @@ const routes: RouteRecordRaw[] = [
                 name: 'system-role',
                 meta: {
                     title: '角色管理',
-                    permiss: '12',
+                    permiss: 'a2',
                 },
                 component: () => import(/* webpackChunkName: "system-role" */ '../views/system/role.vue'),
             },
@@ -46,7 +96,7 @@ const routes: RouteRecordRaw[] = [
                 name: 'system-menu',
                 meta: {
                     title: '菜单管理',
-                    permiss: '13',
+                    permiss: 'a3',
                 },
                 component: () => import(/* webpackChunkName: "system-menu" */ '../views/system/menu.vue'),
             },
@@ -145,7 +195,7 @@ const routes: RouteRecordRaw[] = [
                 name: 'theme',
                 meta: {
                     title: '主题设置',
-                    permiss: '7',
+                    permiss: '71',
                 },
                 component: () => import(/* webpackChunkName: "theme" */ '../views/pages/theme.vue'),
             },
@@ -220,9 +270,18 @@ const routes: RouteRecordRaw[] = [
                     permiss: '28',
                 },
                 component: () => import(/* webpackChunkName: "statistic" */ '../views/element/statistic.vue'),
-            },
+            }
         ],
     },
+    // {
+    //             path: '/dashboard1',
+    //             name: 'dashboard1',
+    //             meta: {
+    //                 title: '系统首页',
+    //                 noAuth: true,
+    //             },
+    //             component: () => import(/* webpackChunkName: "dashboard" */ '../views/dashboard1.vue'),
+    //         },
     {
         path: '/login',
         meta: {

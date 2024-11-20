@@ -1,29 +1,28 @@
 <template>
     <div>
         <el-row :gutter="20" class="mgb20">
-            <el-col :span="6">
+            <el-col :span="12">
                 <el-card shadow="hover" body-class="card-body">
                     <el-icon class="card-icon bg1">
                         <User />
                     </el-icon>
                     <div class="card-content">
-                        <countup class="card-num color1" :end="6666" />
-                        <div>用户访问量</div>
+                        <div style="font-size: 30px;">A市</div>
                     </div>
                 </el-card>
             </el-col>
-            <el-col :span="6">
+            <el-col :span="12">
                 <el-card shadow="hover" body-class="card-body">
                     <el-icon class="card-icon bg2">
                         <ChatDotRound />
                     </el-icon>
                     <div class="card-content">
-                        <countup class="card-num color2" :end="168" />
-                        <div>系统消息</div>
+                        <!-- <countup class="card-num color2" :end="168" /> -->
+                        <div style="font-size: 30px;">下属机构: 6个</div>
                     </div>
                 </el-card>
             </el-col>
-            <el-col :span="6">
+            <!-- <el-col :span="6">
                 <el-card shadow="hover" body-class="card-body">
                     <el-icon class="card-icon bg3">
                         <Goods />
@@ -44,92 +43,52 @@
                         <div>今日订单量</div>
                     </div>
                 </el-card>
-            </el-col>
+            </el-col> -->
         </el-row>
 
         <el-row :gutter="20" class="mgb20">
-            <el-col :span="18">
+            <el-col :span="12">
                 <el-card shadow="hover">
                     <div class="card-header">
-                        <p class="card-header-title">订单动态</p>
-                        <p class="card-header-desc">最近一周订单状态，包括订单成交量和订单退货量</p>
+                        <p class="card-header-title">下属机构指标体系得分情况</p>
+                        <!-- <p class="card-header-desc">显示下属机构的得分情况</p> -->
                     </div>
                     <v-chart class="chart" :option="dashOpt1" />
                 </el-card>
             </el-col>
-            <el-col :span="6">
+            <el-col :span="12">
                 <el-card shadow="hover">
                     <div class="card-header">
-                        <p class="card-header-title">品类分布</p>
-                        <p class="card-header-desc">最近一个月销售商品的品类情况</p>
+                        <p class="card-header-title">下属机构指标体系得分排名</p>
+                        <!-- <p class="card-header-desc">显示下属机构指标体系得分的历史排名</p> -->
                     </div>
-                    <v-chart class="chart" :option="dashOpt2" />
+                    <v-chart class="chart" :option="dashOpt33" />
                 </el-card>
             </el-col>
         </el-row>
-        <el-row :gutter="20">
-            <el-col :span="7">
-                <el-card shadow="hover" :body-style="{ height: '400px' }">
-                    <div class="card-header">
-                        <p class="card-header-title">时间线</p>
-                        <p class="card-header-desc">最新的销售动态和活动信息</p>
-                    </div>
-                    <el-timeline>
-                        <el-timeline-item v-for="(activity, index) in activities" :key="index" :color="activity.color">
-                            <div class="timeline-item">
-                                <div>
-                                    <p>{{ activity.content }}</p>
-                                    <p class="timeline-desc">{{ activity.description }}</p>
-                                </div>
-                                <div class="timeline-time">{{ activity.timestamp }}</div>
-                            </div>
-                        </el-timeline-item>
-                    </el-timeline>
-                </el-card>
-            </el-col>
-            <el-col :span="10">
-                <el-card shadow="hover" :body-style="{ height: '400px' }">
-                    <div class="card-header">
-                        <p class="card-header-title">渠道统计</p>
-                        <p class="card-header-desc">最近一个月的订单来源统计</p>
-                    </div>
-                    <v-chart class="map-chart" :option="mapOptions" />
-                </el-card>
-            </el-col>
-            <el-col :span="7">
-                <el-card shadow="hover" :body-style="{ height: '400px' }">
-                    <div class="card-header">
-                        <p class="card-header-title">排行榜</p>
-                        <p class="card-header-desc">销售商品的热门榜单Top5</p>
-                    </div>
-                    <div>
-                        <div class="rank-item" v-for="(rank, index) in ranks">
-                            <div class="rank-item-avatar">{{ index + 1 }}</div>
-                            <div class="rank-item-content">
-                                <div class="rank-item-top">
-                                    <div class="rank-item-title">{{ rank.title }}</div>
-                                    <div class="rank-item-desc">销量：{{ rank.value }}</div>
-                                </div>
-                                <el-progress
-                                    :show-text="false"
-                                    striped
-                                    :stroke-width="10"
-                                    :percentage="rank.percent"
-                                    :color="rank.color"
-                                />
-                            </div>
-                        </div>
-                    </div>
-                </el-card>
+
+        <p class="card-header-title">下属机构</p>
+        <el-row :gutter="20" class="mgb20">
+            <el-col :span="24">
+                <el-table :data="items2" style="width: 100%; font-size: 14px;" :cell-style="getCellStyle"  :header-cell-style="{ 'text-align': 'center' }">
+                    <el-table-column prop="title" label="机构名称"></el-table-column>
+                    <el-table-column prop="value" label="满分"></el-table-column>
+                    <el-table-column prop="score" label="得分"></el-table-column>
+                    <el-table-column prop="rank" label="排名"></el-table-column>
+                    <el-table-column fixed="right" label="操作">
+                        <el-button link size="large" type="primary" @click="router.push('/dashboard1')">查看机构详情</el-button>
+                    </el-table-column>
+                </el-table>
             </el-col>
         </el-row>
     </div>
 </template>
 
 <script setup lang="ts" name="dashboard">
-import countup from '@/components/countup.vue';
+import { ref } from 'vue';
+// import countup from '@/components/countup.vue';
 import { use, registerMap } from 'echarts/core';
-import { BarChart, LineChart, PieChart, MapChart } from 'echarts/charts';
+import { BarChart, LineChart, PieChart, MapChart, TreeChart } from 'echarts/charts';
 import {
     GridComponent,
     TooltipComponent,
@@ -139,8 +98,10 @@ import {
 } from 'echarts/components';
 import { CanvasRenderer } from 'echarts/renderers';
 import VChart from 'vue-echarts';
-import { dashOpt1, dashOpt2, mapOptions } from './chart/options';
+import { dashOpt1, dashOpt11, dashOpt2, dashOpt3, dashOpt33, mapOptions } from './chart/options';
 import chinaMap from '@/utils/china';
+import router from '@/router';
+import { getCellStyleWithColIndex } from "@/views/table/cell-style"
 use([
     CanvasRenderer,
     BarChart,
@@ -152,8 +113,87 @@ use([
     TitleComponent,
     VisualMapComponent,
     MapChart,
+    TreeChart
 ]);
 registerMap('china', chinaMap);
+
+const getCellStyle = getCellStyleWithColIndex(4)
+const items = ref([
+    {
+        title: '电网运维', value: '100', score: 70, tx: 30, rank: 1, py: "较差", subItems: null
+    },
+    {
+        title: '综合协调', value: '100', score: 70, tx: 30, rank: 1, py: "较差", subItems: null
+    },
+    {
+        title: '营销管理', value: '100', score: 70, tx: 30, rank: 1, py: "较差", subItems: null
+    },
+    {
+        title: '基础保障', value: '100', score: 70, tx: 30, rank: 1, py: "较差", subItems: null
+    }
+]);
+const items1 = ref([
+    {
+        title: '电网运维', value: '100', score: 70, rank: 1, subItems: [
+            { title: '月重损台区治理率', value: '100', score: 70, rank: 1, subItems: null },
+            { title: '计量箱数字化管理规范率', value: '40', score: 40, rank: 1, subItems: null },
+            { title: '计量异常消缺率', value: '100', score: 20, rank: 1, subItems: null },
+            { title: '智能周转柜应用率', value: '100', score: 20, rank: 1, subItems: null },
+            { title: '拆回表回收率', value: '100', score: 20, rank: 1, subItems: null },
+            { title: 'HPLC配送模块绑定率', value: '-', score: 210, rank: 1, subItems: null }
+        ]
+    },
+    {
+        title: '综合协调', value: '100', score: 70, rank: 1, subItems: [
+            { title: '月重损台区治理率', value: '100', score: 70, rank: 1, subItems: null },
+            { title: '计量箱数字化管理规范率', value: '40', score: 40, rank: 1, subItems: null },
+            { title: '计量异常消缺率', value: '100', score: 20, rank: 1, subItems: null },
+            { title: '智能周转柜应用率', value: '100', score: 20, rank: 1, subItems: null },
+            { title: '拆回表回收率', value: '100', score: 20, rank: 1, subItems: null },
+            { title: 'HPLC配送模块绑定率', value: '-', score: 210, rank: 1, subItems: null }
+        ]
+    },
+    {
+        title: '营销管理', value: '100', score: 70, rank: 1, subItems: [
+            { title: '月重损台区治理率', value: '100', score: 70, rank: 1, subItems: null },
+            { title: '计量箱数字化管理规范率', value: '40', score: 40, rank: 1, subItems: null },
+            { title: '计量异常消缺率', value: '100', score: 20, rank: 1, subItems: null },
+            { title: '智能周转柜应用率', value: '100', score: 20, rank: 1, subItems: null },
+            { title: '拆回表回收率', value: '100', score: 20, rank: 1, subItems: null },
+            { title: 'HPLC配送模块绑定率', value: '-', score: 210, rank: 1, subItems: null }
+        ]
+    },
+    {
+        title: '基础保障', value: '100', score: 70, rank: 1, subItems: [
+            { title: '月重损台区治理率', value: '100', score: 70, rank: 1, subItems: null },
+            { title: '计量箱数字化管理规范率', value: '40', score: 40, rank: 1, subItems: null },
+            { title: '计量异常消缺率', value: '100', score: 20, rank: 1, subItems: null },
+            { title: '智能周转柜应用率', value: '100', score: 20, rank: 1, subItems: null },
+            { title: '拆回表回收率', value: '100', score: 20, rank: 1, subItems: null },
+            { title: 'HPLC配送模块绑定率', value: '-', score: 210, rank: 1, subItems: null }
+        ]
+    }
+]);
+const items2 = ref([
+    {
+        title: 'A县', value: '100', score: 70, rank: 1, subItems: null
+    },
+    {
+        title: 'B县', value: '100', score: 70, rank: 3, subItems: null
+    },
+    {
+        title: 'C县', value: '100', score: 70, rank: 2, subItems: null
+    },
+    {
+        title: 'D县', value: '100', score: 70, rank: 4, subItems: null
+    },
+    {
+        title: 'E县', value: '100', score: 70, rank: 5, subItems: null
+    },
+    {
+        title: 'F县', value: '100', score: 70, rank: 6, subItems: null
+    }
+]);
 const activities = [
     {
         content: '收藏商品',
@@ -219,6 +259,7 @@ const ranks = [
         color: '#009688',
     },
 ];
+
 </script>
 
 <style>
@@ -229,12 +270,16 @@ const ranks = [
     padding: 0;
 }
 </style>
+<style>
+@import 'https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css';
+@import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css';
+</style>
 <style scoped>
 .card-content {
     flex: 1;
     text-align: center;
     font-size: 14px;
-    color: #999;
+    color: #00796A;
     padding: 0 20px;
 }
 
@@ -248,15 +293,15 @@ const ranks = [
     height: 100px;
     text-align: center;
     line-height: 100px;
-    color: #fff;
+    color: #00796A;
 }
 
 .bg1 {
-    background: #2d8cf0;
+    background: #E3EFED;
 }
 
 .bg2 {
-    background: #64d572;
+    background: #E3EFED;
 }
 
 .bg3 {
@@ -294,10 +339,13 @@ const ranks = [
 }
 
 .card-header-title {
-    font-size: 18px;
+    color:#444444;
+    font-size: 16px;
     font-weight: bold;
     margin-bottom: 5px;
+    text-align: center; /* 添加这一行来使文本居中 */
 }
+
 
 .card-header-desc {
     font-size: 14px;
@@ -350,8 +398,16 @@ const ranks = [
     font-size: 14px;
     color: #999;
 }
+
 .map-chart {
     width: 100%;
     height: 350px;
 }
+.header::after{
+	content: "";
+	width: 10px;
+	height: 24px;
+	display: block;
+}
+
 </style>

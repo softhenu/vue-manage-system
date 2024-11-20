@@ -1,0 +1,19 @@
+{
+    "data": {
+        "list": [
+            {
+                "id": 1,
+                "name": "指标1",
+                "language1": "术语1内容",
+                "language1Details": [
+                    {"detail": "详细内容1"},
+                    {"detail": "详细内容2"}
+                ],
+                "language2": "术语2内容",
+                "healthIndex": "90"
+            }
+            
+        ],
+        "pageTotal": 100
+    }
+}

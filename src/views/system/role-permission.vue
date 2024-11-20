@@ -9,7 +9,7 @@
             show-checkbox
             :default-checked-keys="checkedKeys"
         />
-        <el-button type="primary" @click="onSubmit">保存权限</el-button>
+        <el-button class="hover-y" style="background-color: #00796A; border:none; color:#FAFAFA" @click="onSubmit">保存权限</el-button>
     </div>
 </template>
 

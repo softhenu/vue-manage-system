@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>ECharts</title>
+    <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+</head>
+<body>
+    <div id="main" style="width: 600px;height:400px;"></div>
+    <script type="text/javascript">
+        var chartDom = document.getElementById('main');
+        var myChart = echarts.init(chartDom);
+        var option;
+
+        option = {
+            tooltip: {
+                trigger: 'axis'
+            },
+            legend: {
+                data: ['得分', '排名']
+            },
+            xAxis: [
+                {
+                    type: 'category',
+                    data: ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11']
+                }
+            ],
+            yAxis: [
+                {
+                    type: 'value',
+                    name: '得分',
+                    position: 'left',
+                    min: 0,
+                    max: 600
+                },
+                {
+                    type: 'value',
+                    name: '排名',
+                    position: 'right',
+                    min: 0,
+                    max: 1400
+                }
+            ],
+            series: [
+                {
+                    name: '得分',
+                    type: 'bar',
+                    data: [548.27, 548.27, 548.27, 548.27, 548.27, 0, 0, 0, 0, 0, 0],
+                    itemStyle: {
+                        color: '#60C9FF'
+                    }
+                },
+                {
+                    name: '排名',
+                    type: 'line',
+                    yAxisIndex: 1,
+                    data: [1279.3, 1279.3, 1279.3, 1279.3, 1279.3, 11, 11, 11, 11, 11, 11],
+                    itemStyle: {
+                        color: '#FFB140'
+                    }
+                }
+            ]
+        };
+
+        option && myChart.setOption(option);
+    </script>
+</body>
+</html>
